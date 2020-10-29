@@ -3,10 +3,12 @@
   display: block;
   white-space: nowrap;
 }
+
 .topRate {
   position: absolute;
   display: inline-block;
 }
+
 .svgInDiv {
   width: 24px;
   height: 24px;
@@ -14,6 +16,7 @@
   margin-right: 8px;
   display: inline-block;
 }
+
 .top {
   position: absolute;
   left: 0;
@@ -22,6 +25,7 @@
   bottom: 0;
   margin: auto;
 }
+
 .top:hover {
   height: 24px !important;
   width: 24px !important;

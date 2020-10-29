@@ -2,21 +2,18 @@ import React, { useState, useEffect } from 'react';
 import * as tools from '../utils/tools'
 import './index.css'
 /**
- * 父级相对定位子集容器绝对定位;将多个五角星图层放上面，多个span图层放下面。利用backgroundImage背景图线性渐变来实现。
- * 有图片的background-image>background>background-color
- * 有颜色的，图片优先级高，先显示，然后显示颜色
- * 颜色：background-color>background
- */
-/**
- * 
- * @param {Object} 传参
+ * @param {*} size  svg宽高
+ * @param {*} value 输入的数值
+ * @param {*} count 最大数值
+ * @param {*} num   svg个数
  */
 const Rate = ({ size = 20, value = 0, count = 5, num = 5 }) => {
+    
     const [rateJsx, setRateJsx] = useState([]);
 
     const restartHtml = ({ size = 20, value = 0, count = 5, num = 5 }) => {
         const currentRate = []
-        const precent = (Number(value) / 5).toFixed(2);// 百分数
+        const precent = (Number(value) / count).toFixed(2);// 百分数
         const rateNum = Number(precent) * Number(num)
         for (let i = 0; i < num; i++) {
             let offset = 0
@@ -46,9 +43,11 @@ const Rate = ({ size = 20, value = 0, count = 5, num = 5 }) => {
         }
         setRateJsx(currentRate)
     }
+
     useEffect(() => {
         restartHtml({ size, value, count, num })
-    }, [value])
+    }, [value, size, num, count])
+
     return <span style={{ height: size, width: num * size + num * 12 }} className='rate' >
         <span style={{ height: size }} className='topRate'>{rateJsx}</span>
     </span>
